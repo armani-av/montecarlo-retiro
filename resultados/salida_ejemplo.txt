@@ -1,0 +1,40 @@
+========================================================================
+SIMULACIÓN DE MONTECARLO - INVERSIÓN PARA EL RETIRO
+========================================================================
+Supuestos (ilustrativos; no son pronóstico ni asesoría financiera):
+  Saldo inicial ..................... $50,000
+  Aportación mensual ................ $3,000 (pesos de hoy, sube con la inflación)
+  Momento de la aportación .......... inicio de cada mes
+  Horizonte ......................... 30 años (360 meses)
+  Rendimiento anual esperado ........ 8.00 % nominal
+  Volatilidad anual ................. 15.00 %
+  Inflación anual ................... 4.00 %
+  Comisión anual sobre saldo ........ 0.55 %
+  Meta de retiro .................... $2,000,000 pesos de hoy (= $6,486,795 nominales)
+  Trayectorias simuladas ............ 10,000
+  Semilla aleatoria ................. 2026
+
+Conversión a parámetros mensuales (rendimiento logarítmico ~ Normal(m, s^2)):
+  m = ln(1 + mu)/12 - s^2/2 = 0.005476   s = sigma/sqrt(12) = 0.043301
+  Inflación mensual = (1 + pi)^(1/12) - 1 = 0.3274 %
+
+Total aportado (incluye saldo inicial): $2,105,812 nominales = $1,130,000 pesos de hoy
+Valor final sin volatilidad (rendimiento constante): $1,954,179 pesos de hoy
+
+Valor final al cabo de 30 años:
+  Estadístico                  Pesos nominales          Pesos de hoy
+  ------------------------------------------------------------------
+  Media                             $6,331,916            $1,952,248
+  Percentil 5                       $2,391,576              $737,368
+  Percentil 25                      $3,821,398            $1,178,208
+  Percentil 50                      $5,376,436            $1,657,656
+  Percentil 75                      $7,690,206            $2,371,034
+  Percentil 95                     $13,439,168            $4,143,546
+
+Probabilidad de alcanzar la meta: 35.88 %  (error estándar de Montecarlo: +/- 0.48 puntos)
+
+Lectura: el percentil 5 es un escenario desfavorable (solo 5 % de los futuros
+simulados terminan peor) y el percentil 95 uno favorable. La mediana (P50) es
+el resultado 'típico'; la media queda arriba porque la distribución tiene cola
+larga hacia la derecha.
+========================================================================
